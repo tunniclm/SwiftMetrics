@@ -94,7 +94,9 @@ class SwiftMetricsService: WebSocketService {
         monitor.on(sendCPU)
         monitor.on(sendMEM)
         monitor.on(storeHTTP)
-        sendhttpData()
+        DispatchQueue.global().asyncAfter(deadline: .now() + .seconds(15)) {
+            self.sendhttpData()
+        }
     }
 
 
