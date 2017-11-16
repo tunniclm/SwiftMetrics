@@ -94,7 +94,9 @@ class SwiftMetricsService: WebSocketService {
         monitor.on(sendCPU)
         monitor.on(sendMEM)
         monitor.on(storeHTTP)
-        DispatchQueue.global().asyncAfter(deadline: .now() + .seconds(15)) {
+        print("Scheduling first http data for 30 seconds from now")
+        DispatchQueue.global().asyncAfter(deadline: .now() + .seconds(30)) {
+            print("Sending first http data")
             self.sendhttpData()
         }
     }
